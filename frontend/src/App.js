@@ -11,6 +11,8 @@ import BackgroundWrapper from './components/Wrappers/BackgroundWrapper';
 import AllRisks from './pages/AllRisks';
 import NewRisk from './pages/NewRisks';
 import RiskMatrix from './pages/RiskMatrix';
+import ProjectsLayout from './pages/ProjectsLayout';
+import NewProject from './pages/NewProject';
 
 const router = createBrowserRouter([
   {
@@ -26,8 +28,19 @@ const router = createBrowserRouter([
         ]
     },
       { path: "notifications" ,element: <Notifications/>},
-    ]
+    //   { path: "projects",element:<ProjectsLayout/>,
+    //    children:[
+    //     {path:"new",element:<NewProject/>},
+    //    ]
+    // }
+    ],
+  },
+  { 
+     
+       path:"/projects/new",element:<NewProject/>
+   
   }
+
 ])
 
 

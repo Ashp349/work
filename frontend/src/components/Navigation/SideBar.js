@@ -3,13 +3,24 @@ import { Link } from 'react-router-dom';
 import { BsArrowLeftShort, BsSearch } from "react-icons/bs";
 import { useSideBar,useSideBarUpdate } from '../Context/SideBarContext';
 import { ContextProvider } from '../Context/SideBarContext';
-import CreateProject from '../CustomTemplates/CreateProject';
+import CreateProject from '../../CustomTemplates/CreateProject';
+import CustomDropdown from '../ContentBody/LinkDropdown';
+import LinkDropdown from '../ContentBody/LinkDropdown';
 
 
 export default function SideBar() {
 //    const [open, setOpen] = useState(true);
    const openSideBar = useSideBar();
    const updateSideBar = useSideBarUpdate();
+
+   const [openProjectsView,setProjectsView] = useState(false);
+
+   const handleProjectsView=()=>{
+       setProjectsView(true);
+       if(true){
+         setProjectsView(false);
+       }  
+   };
 
 
     return (
@@ -32,7 +43,8 @@ export default function SideBar() {
             <li className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2 ${!openSideBar && "hidden"}`}>
                 <span className='flex flex-row'>
                 <i class="fa-solid fa-xmark fa-sm mt-2.5 "></i>
-                <Link className="ml-1.5" to="/risk">Risks</Link>
+                  <Link className="ml-1.5" to="/risk">Risks</Link>
+                  {/* <LinkDropdown/> */}
                 </span>
             </li>
             <li className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2 ${!openSideBar && "hidden"}`}>
@@ -41,7 +53,28 @@ export default function SideBar() {
                 <Link className="ml-1.5" to="/notifications">Notifications</Link>
                 </span>
             </li>
+            {/* <ul>
+            <li className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2 ${!openSideBar && "hidden"}`}>
+                <span className='flex flex-row'>
+                <i class="fa-solid fa-xmark fa-sm mt-2.5 "></i>
+                  <Link className="ml-1.5" to="/risk">Projects</Link>
+                </span>
+            </li>
+            <li className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2 ${!openSideBar && "hidden"}`}>
+                <span className='flex flex-row'>
+                <i class="fa-solid fa-xmark fa-sm mt-2.5 "></i>
+                  <Link className="ml-1.5" to="/risk">Risks</Link>
+                </span>
+            </li>
             
+            </ul> */}
+            <div className='flex flex-row'>
+              <i class="fa-solid fa-xmark fa-sm mt-2.5 "></i>
+              <p onClick={handleProjectsView} className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer ml-1.5 p-2 hover:bg-light-white rounded-md mt-2 ${!openSideBar && "hidden"}`}>Projects</p>
+               {openProjectsView && 
+                  <LinkDropdown/>
+                 }
+            </div>
            </ul>
         </div>
         </ContextProvider>
