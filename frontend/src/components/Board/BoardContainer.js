@@ -29,7 +29,7 @@ export default function BoardContainer(props){
 
 
     return(
-        <div className="grid grid-flow-row auto-rows-max h-auto w-52 shadow-md overflow-auto m-3 rounded-lg border-solid border-[1.5px] border-[#eff0f3] bg-[#ffffff]">
+        <div className="grid grid-flow-row auto-rows-max h-auto w-52 shadow-md overflow-auto mt-2 ml-7 mr-0 rounded-lg border-solid border-[1.5px] border-[#eff0f3] bg-[#ffffff]">
            <header className="m-2 font-bold text-[0.91rem]">{props.column.title}</header>
            <div>                  
            <Container

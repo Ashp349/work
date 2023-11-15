@@ -27,6 +27,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import CreateProject from '../../CustomTemplates/CreateProject';
+// import SideBar from '../Navigation/SideBar';
 
 const LinkDropdown = (props) => {
   const [options, setOptions] = useState([]);
@@ -51,12 +52,13 @@ const LinkDropdown = (props) => {
       </div>     */}
         {options.map(option => (
           <span key={option.key} value={option.value}>
-            <Link to={option.link}>{option.value}</Link>
+            <Link className={props.classes} to={option.link}>{option.value}</Link>
           </span>
         ))}
       </div>
-      <Link to="/projects/new">
-       <button >Add Custom Option</button>
+      <Link className={props.classes} to="/projects/new">
+      <i class="fa-solid fa-plus fa-sm"></i>
+       <button>Add Project</button>
       </Link>
     </div>
   );

@@ -1,8 +1,9 @@
-import React,{useState} from "react";
+import React,{useState,useContext} from "react";
 import Button from "../components/ContentBody/Button";
 import RiskLayout from "../pages/RiskLayout";
 import { Link } from "react-router-dom";
-
+import ProjectContext from "../components/Context/FormDataProvider";
+import FormDataContext from "../components/Context/FormDataProvider";
 
 // const templates=[
 //    {    
@@ -34,7 +35,7 @@ export default function CreateProject(){
 
 
      const [formData, setFormData] = useState(data);
-     
+     const { submitForm } = useContext(FormDataContext);     
      const[projectName,setProject] = useState("");
      const[template,setTemplate] = useState("");
 
@@ -42,6 +43,11 @@ export default function CreateProject(){
      const templates=[
         { 
           name:"Risk Template",    
+          component:<RiskLayout projectName={projectName}/>,
+          link:"/risk",
+        },
+        {
+          name:"Another One",
           component:<RiskLayout projectName={projectName}/>,
           link:"/risk",
         }
@@ -54,6 +60,7 @@ export default function CreateProject(){
 
      const handleTemplateSelect = (templateName) =>{
          setTemplate(templateName);
+         console.log(templateName);
      }
 
      const createProject = (e) =>{
@@ -63,6 +70,7 @@ export default function CreateProject(){
             component:template
         });
         dropdownData.push(formData);
+        submitForm(formData);
         // if(projectName && template){
             setProject("");
             setTemplate("");
@@ -72,6 +80,7 @@ export default function CreateProject(){
 
      return(
        <>
+       {/* <ProjectContext> */}
        <div className="flex flex-col">
        <div className="flex flex-row justify-between m-3">
        <button><i class="fa-solid fa-arrow-left"></i></button>
@@ -96,7 +105,7 @@ export default function CreateProject(){
             {templates.length > 0 &&
               templates.map((template, index) => (
                 <li
-                  className="bg-slate-500 w-[8.3rem] h-[8.4rem] text-center pt-[3.2rem] pl-2 pr-2 ml-9 mt-4 rounded-md"
+                  className="bg-slate-500 w-[8.3rem] h-[8.4rem] text-center pt-[3.2rem] pl-2 pr-2 ml-9 mt-4 rounded-md cursor-pointer hover:shadow-xl"
                   key={index}
                   onClick={() => handleTemplateSelect(template)}
                 >
@@ -113,6 +122,7 @@ export default function CreateProject(){
       </form>
     </div>
       {/* </div> */}
+    {/* </ProjectContext>   */}
        </>
     )
 }

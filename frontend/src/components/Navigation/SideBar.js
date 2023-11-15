@@ -1,14 +1,17 @@
 import { React, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Form, Link } from 'react-router-dom';
 import { BsArrowLeftShort, BsSearch } from "react-icons/bs";
 import { useSideBar,useSideBarUpdate } from '../Context/SideBarContext';
 import { ContextProvider } from '../Context/SideBarContext';
 import CreateProject from '../../CustomTemplates/CreateProject';
 import CustomDropdown from '../ContentBody/LinkDropdown';
 import LinkDropdown from '../ContentBody/LinkDropdown';
+import { FormDataProvider } from '../Context/FormDataProvider';
 
 
 export default function SideBar() {
+
+
 //    const [open, setOpen] = useState(true);
    const openSideBar = useSideBar();
    const updateSideBar = useSideBarUpdate();
@@ -16,15 +19,14 @@ export default function SideBar() {
    const [openProjectsView,setProjectsView] = useState(false);
 
    const handleProjectsView=()=>{
-       setProjectsView(true);
-       if(true){
-         setProjectsView(false);
-       }  
+      setProjectsView(!openProjectsView);
    };
-
+   
+   const classes=`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer ml-5 p-2 hover:bg-light-white rounded-md mt-2 ${!openSideBar && "hidden"}`
 
     return (
         <ContextProvider>
+        <FormDataProvider>
         <div className={`fixed h-screen p-5 pt-8 antialiased bg-gray-800 ${openSideBar ? "w-72" : "w-20"} duration-300`}>  
              <BsArrowLeftShort className={`bg-white text-dark-purple text-3xl rounded-full absolute -right-3 top-9 border border-dark-purple cursor-pointer ${!openSideBar && "rotate-180"}`}
                 onClick={updateSideBar} />
@@ -68,15 +70,18 @@ export default function SideBar() {
             </li>
             
             </ul> */}
-            <div className='flex flex-row'>
-              <i class="fa-solid fa-xmark fa-sm mt-2.5 "></i>
-              <p onClick={handleProjectsView} className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer ml-1.5 p-2 hover:bg-light-white rounded-md mt-2 ${!openSideBar && "hidden"}`}>Projects</p>
-               {openProjectsView && 
-                  <LinkDropdown/>
-                 }
+          <div className='flex flex-col'>  
+            <div className={`text-gray-300 text-sm flex items-center gap-x-2 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2 ${!openSideBar && "hidden"}`}>
+              <i class={` ${!openProjectsView ? "fa-solid fa-angle-right duration-700" : "fa-solid fa-angle-down duration-700 " } ${!openSideBar && "hidden"} `}></i>
+                  <p  className="p-0 duration-500" onClick={handleProjectsView}>Projects</p>
             </div>
+            {openProjectsView && 
+                  <LinkDropdown classes={classes}/>
+                 }
+          </div>  
            </ul>
         </div>
+        </FormDataProvider>
         </ContextProvider>
     )
 }
