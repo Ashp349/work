@@ -6,7 +6,7 @@ export default  function ProjectsLayout(){
 
     return(
         <>
-          <SideBar/>
+          {/* <SideBar/> */}
           <Outlet/>
         </>
     )

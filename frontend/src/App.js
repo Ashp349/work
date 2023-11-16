@@ -29,7 +29,12 @@ const router = createBrowserRouter([
         ]
     },
       { path: "notifications" ,element: <Notifications/>},
-    //   { path: "projects",element:<ProjectsLayout/>,
+  //     { 
+     
+  //      path:"/projects/new",element:<NewProject/>
+   
+  // }
+    //     { path: "projects",element:<ProjectsLayout/>,
     //    children:[
     //     {path:"new",element:<NewProject/>},
     //    ]

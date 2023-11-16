@@ -33,11 +33,11 @@ const LinkDropdown = (props) => {
   const [options, setOptions] = useState([]);
 
   const handleAddOption = () => {
-    if(props.dropdownData.title && props.dropdownData.link){
+    if(props.projectData.title && props.projectData.link){
      const newOption = {
       key: Math.random(),
-      value: props.dropdownData.title,
-      link: `/${props.dropdownData.link}/${Math.random()}`
+      value: props.projectData.title,
+      link: `/${props.projectData.link}/${Math.random()}`
     };
     setOptions(prevOptions => [...prevOptions, newOption]);
    }
