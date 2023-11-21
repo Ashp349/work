@@ -1,26 +1,57 @@
+
+// ProjectDataContext.js
 import React, { createContext, useState } from 'react';
+import CreateProject from '../../CustomTemplates/CreateProject';
 
-const FormDataContext = createContext({});
+const ProjectDataContext = createContext();
 
-export const FormDataProvider = ({ children }) => {
-  const [submittedData, setSubmittedData] = useState(null);
+const ProjectDataProvider = ({ children }) => {
+  // const [projectData, setProjectData] = useState({ title: '', link: '' });
 
-  const submitForm = (data) => {
-    setSubmittedData(data);
-  };
+  // const updateProjectData = (data) => {
+  //   setProjectData(data);
+  // };
 
-  const obj = {
-    submitForm,
-    submittedData,
-  }
   return (
-    <FormDataContext.Provider value={ obj }>
+    <ProjectDataContext.Provider value={{ projectData }}>
       {children}
-    </FormDataContext.Provider>
+    </ProjectDataContext.Provider>
   );
 };
 
-export default FormDataContext;
+export { ProjectDataContext, ProjectDataProvider };
+
+
+
+
+
+
+
+
+
+// import React, { createContext, useState } from 'react';
+
+// const FormDataContext = createContext({});
+
+// export const FormDataProvider = ({ children }) => {
+//   const [submittedData, setSubmittedData] = useState(null);
+
+//   const submitForm = (data) => {
+//     setSubmittedData(data);
+//   };
+
+//   const obj = {
+//     submitForm,
+//     submittedData,
+//   }
+//   return (
+//     <FormDataContext.Provider value={ obj }>
+//       {children}
+//     </FormDataContext.Provider>
+//   );
+// };
+
+// export default FormDataContext;
 
 // import React, { createContext, useState } from "react";
 

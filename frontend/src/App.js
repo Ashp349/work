@@ -8,22 +8,24 @@ import Notifications from './pages/Notifications';
 import HomePage from './pages/HomePage';
 import { ContextProvider } from './components/Context/SideBarContext';
 import BackgroundWrapper from './components/Wrappers/BackgroundWrapper';
-import AllRisks from './pages/AllRisks';
+import AllRisksBoard from './pages/AllRisksBoard';
 import NewRisk from './pages/NewRisks';
 import RiskMatrix from './pages/RiskMatrix';
 import ProjectsLayout from './pages/ProjectsLayout';
 import NewProject from './pages/NewProject';
-
+import AllRisksList from './pages/AllRisksList';
+import { ProjectDataProvider } from './components/Context/FormDataContext';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element : <RootLayout/>,
+    element : <RootLayout />,
     children: [
       { index:true ,element :<HomePage/>},
       { path: "risk" ,element: <RiskLayout/>,
         children:[
-          {index:true,element:<AllRisks/>},
+          {index:true,element:<AllRisksBoard/>},
+          {path:"list",element:<AllRisksList/>},
           {path:"new",element:<NewRisk/>},
           {path:"riskmatrix",element:<RiskMatrix/>}
         ]

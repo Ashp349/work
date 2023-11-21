@@ -3,10 +3,11 @@ import React,{useState,useContext,useEffect} from "react";
 import Button from "../components/ContentBody/Button";
 import RiskLayout from "../pages/RiskLayout";
 import { Link,useNavigate } from "react-router-dom";
-import ProjectContext from "../components/Context/FormDataContext";
+import ProjectContext, { ProjectDataProvider } from "../components/Context/FormDataContext";
 import FormDataContext from "../components/Context/FormDataContext";
-import { FormDataProvider } from "../components/Context/FormDataContext";
-
+// import { FormDataProvider } from "../components/Context/FormDataContext";
+import { ProjectDataContext } from "../components/Context/FormDataContext";
+import ProjectsInfo from "./ProjectsInfo";
 // import React, { useContext } from "react";
 // import { Link } from "react-router-dom";
 // import { FormDataContext } from "../components/Context/FormDataProvider";
@@ -20,7 +21,9 @@ const data={
 }
 
 //imp
-const dropdownData=[];
+// const dropdownData=[];
+
+
 
 const iconClasses1="fa-regular fa-arrow-left";
 const iconClasses2="fa-regular fa-xmark";
@@ -37,10 +40,16 @@ export default function CreateProject(){
     //  ]
 
 //imp
+    // const { projectData, updateProjectData } = useContext(ProjectDataContext);
      const [formData, setFormData] = useState(data);
+
+     const [dropdownData, setDropdownData] = useState([]);
     //  const { submitForm } = useContext(FormDataContext);     
      const[projectName,setProject] = useState("");
      const[template,setTemplate] = useState("");
+
+
+    //  const ProjectDataContext = createContext();
 
   //imp
      const templates=[
@@ -97,12 +106,18 @@ export default function CreateProject(){
      }
 
      const createProject = (e) =>{
-        e.preventDefault();
+       e.preventDefault();
         setFormData({
             title:projectName,
             component:template,
-        });
+       });
 
+
+      //  updateProjectData({
+      //   title: projectName,
+      //   link: template,
+      // });   
+  
         console.log('createProject function is triggered!');
 
         // const newFormData = {
@@ -110,7 +125,9 @@ export default function CreateProject(){
         //   component: template,
         //   link: '',
         // };
-        dropdownData.push(formData);
+        // dropdownData.push(formData);
+        setDropdownData((prevData) => [...prevData, formData]);
+        console.log(projectData);
         console.log(dropdownData);
         console.log(formData);
         // submitForm(formData);
@@ -120,16 +137,46 @@ export default function CreateProject(){
         // }
      }
 
+    // const createProject = (e) => {
+    //   e.preventDefault();
+    //   const updatedFormData = {
+    //     title: projectName,
+    //     component: template,
+    //   };
+    
+    //   setFormData(updatedFormData);
+    //   updateProjectData(updatedFormData);
+    
+    //   console.log('createProject function is triggered!');
+    //   console.log(projectData);
+    //   console.log("The data has been set");
+    //   console.log(dropdownData);
+    //   console.log(updatedFormData);
+    
+    //   dropdownData.push(updatedFormData);
+    //   console.log(dropdownData);
+    //   setDropdownData((prevData) => [...prevData, updatedFormData]);
+
+    //   setProject("");
+    //   setTemplate("");
+    // };
+
     //  useEffect(() => {
     //   console.log(formData);
     // }, [formData]);  
 
 
+    
+
+
+    console.log(projectData); 
      console.log(dropdownData);
+    console.log("The data has been set")
+
+
 
      return(
        <>
-       {/* <ProjectContext> */}
        <div className="flex flex-col">
        <div className="flex flex-row justify-between m-3">
        <button onClick={goback}>
@@ -168,16 +215,28 @@ export default function CreateProject(){
           </ul>
         {/* <Link to="/"> */}
           <button className="mt-10 cursor-pointer font-semibold" type = "submit" onClick={createProject} >
-            <Link to="/">
+            {/* <Link to="/"> */}
             Create Project
-            </Link>
+            {/* </Link> */}
           </button>
         {/* </Link> */}
         </div>
       </form>
+      {/* <ProjectsInfo dropdownData={dropdownData}/> */}
     </div>
+
+
+
       {/* </div> */}
     {/* </ProjectContext>   */}
+    {/* <div>
+       <p>Data: 
+          {dropdownData.map((dropdown)=>{
+            <p>{dropdown}</p>
+          })}   
+       </p>
+    </div> */}
        </>
     )
 }
+
