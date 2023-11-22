@@ -1,29 +1,34 @@
 // LinkDropdown.js
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { ProjectDataContext, ProjectDataProvider } from '../Context/FormDataContext';
+// import { ProjectDataContext, ProjectDataProvider } from '../Context/FormContext';
 import { dropdownData } from '../../CustomTemplates/CreateProject';
+// import { useFormContext } from '../Context/FormContext';
 
 
 const LinkDropdown = (props) => {
-  const { projectData } = useContext(ProjectDataContext);
+  // const { projectData } = useContext(ProjectDataContext);
   const [options, setOptions] = useState([]);
+//  const {state} = useFormContext;
 
-  console.log(projectData);
+  // console.log(projectData);
+  // const name=state.name;
+  // const title= state.template.title;
 
   const handleAddOption = () => {
     // if (projectData.title && projectData.link) {
-      const newOption = {
-        key: Math.random(),
-        value:projectData.title,
-        link: `/${projectData.link}/${Math.random()}`,
-      };
-      setOptions((prevOptions) => [...prevOptions, newOption]);
-      console.log(projectData);
+      // const newOption = {
+      //   key: Math.random(),
+      //   value:projectData.title,
+      //   link: `/${projectData.link}/${Math.random()}`,
+      // };
+      // setOptions((prevOptions) => [...prevOptions, newOption]);
+      // console.log(projectData);
     // }
   };
 
   return (
+    
     <div>
       {options.map((option) => (
         <span key={option.key} value={option.value}>
@@ -32,6 +37,12 @@ const LinkDropdown = (props) => {
           </Link>
         </span>
       ))}
+      {/* <Link>
+        <span>
+           {props.name}
+        </span>
+      </Link> */}
+
       <Link className={props.classes} to="/projects/new">
         <i className="fa-solid fa-plus fa-sm"></i>
         <button>Add Project</button>

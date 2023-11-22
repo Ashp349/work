@@ -6,15 +6,18 @@ import { ContextProvider } from '../Context/SideBarContext';
 import CreateProject from '../../CustomTemplates/CreateProject';
 import CustomDropdown from '../ContentBody/LinkDropdown';
 import LinkDropdown from '../ContentBody/LinkDropdown';
-import FormDataContext, { ProjectDataContext } from '../Context/FormDataContext';
-import { FormDataProvider } from '../Context/FormDataContext';
+import FormDataContext, { ProjectDataContext } from '../Context/FormContext';
+import { FormDataProvider } from '../Context/FormContext';
 // import { FormDataContext, FormDataProvider } from "../Context/FormDataContext";
 import { dropdownData } from '../../CustomTemplates/CreateProject';
-import { ProjectDataProvider } from '../Context/FormDataContext';
+import { ProjectDataProvider } from '../Context/FormContext';
 import LinkDropdownWrapper from '../ContentBody/LinkDropdownWrapper';
+import { FormProvider,useFormContext } from '../Context/FormContext';
 
 export default function SideBar() {
 
+
+  // const { state } = useFormContext();
 
 
 //    const [open, setOpen] = useState(true);
@@ -37,6 +40,7 @@ export default function SideBar() {
 
     return (
       // <FormDataProvider>
+      // <FormProvider initialState={{ projectName: '', template: '' }}>
         <ContextProvider>
         <div className={`fixed h-screen p-5 pt-8 antialiased bg-[#1B1212] ${openSideBar ? "w-72" : "w-20"} duration-300`}>  
              <BsArrowLeftShort className={`bg-white text-dark-purple text-3xl rounded-full absolute -right-3 top-9 border border-dark-purple cursor-pointer ${!openSideBar && "rotate-180"}`}
@@ -93,6 +97,6 @@ export default function SideBar() {
            </ul>
         </div>
         </ContextProvider>
-      // </FormDataProvider>
+        // </FormProvider>
     )
 }
