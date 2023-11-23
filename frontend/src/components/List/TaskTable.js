@@ -14,6 +14,11 @@ import StatusCell from "./StatusCell";
 import DateCell from "./DateCell";
 import Filters from "./Filters";
 import SortIcon from "./icons/SortIcon";
+import { useDisplay, useDisplayUpdate } from "../Context/DisplayInfoContext";
+import Info from "../FormsContent/Info";
+
+
+
 
 const columns = [
   {
@@ -92,6 +97,11 @@ const columns = [
 const TaskTable = () => {
   const [data, setData] = useState(DATA);
   const [columnFilters, setColumnFilters] = useState([]);
+  const openinfo = useDisplay();
+  const updateInfo= useDisplayUpdate();
+  // const [sideWindow,setSideWindow] = useState(true);
+
+
 
   const table = useReactTable({
     data,
@@ -120,8 +130,10 @@ const TaskTable = () => {
   });
 
   return (
-    <div>
-    <Box className="h-64">
+  <>
+    
+    <div className="relative">
+    <Box>
       <Filters
         columnFilters={columnFilters}
         setColumnFilters={setColumnFilters}
@@ -130,7 +142,7 @@ const TaskTable = () => {
         {table.getHeaderGroups().map((headerGroup) => (
           <Box className="flex w-fit-content" key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
-              <Box className="text-[#1e1f21] hover\:opacity-100 shadow-inset border-box border-l-0 border-[0.0625rem] border-solid border-[#edeae9] relative flex justify-center items-center text-gray-400 p-2 font-bold text-xs uppercase text-center" style={{ zIndex: 1 }} w={header.getSize()} key={header.id}>
+              <Box className="text-[#1e1f21] hover\:opacity-100 shadow-inset border-box border-l-0 border-[0.0625rem] border-solid border-[#edeae9] relative flex justify-center items-center p-2 font-bold text-xs uppercase text-center" style={{ zIndex: 1 }} w={header.getSize()} key={header.id}>
                 {header.column.columnDef.header}
                 {header.column.getCanSort() && (
                   <Icon
@@ -158,7 +170,7 @@ const TaskTable = () => {
           </Box>
         ))}
         {table.getRowModel().rows.map((row) => (
-          <Box className="text-[#1e1f21] flex w-fit-content" key={row.id}>
+          <Box onClick={updateInfo} className={`text-[#1e1f21] flex w-fit-content cursor-pointer`} key={row.id}>
             {row.getVisibleCells().map((cell) => (
               <Box className="text-[#1e1f21] shadow-inset border-box border-[0.0625rem] border-solid border-[#edeae9]" w={cell.column.getSize()} key={cell.id}>
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -168,11 +180,12 @@ const TaskTable = () => {
         ))}
       </Box>
       <br />
+      <div className="fixed bottom-5 right-3 font-bold rounded-md flex items-center flex-col p-2  bg-slate-50  ">
       <Text className="text-sm" mb={2}>
         Page {table.getState().pagination.pageIndex + 1} of{" "}
         {table.getPageCount()}
       </Text>
-      <ButtonGroup size="sm" isAttached variant="outline">
+      <ButtonGroup size="sm" isAttached variant="outline" className="gap-4 text-sm">
         <Button
           onClick={() => table.previousPage()}
           isDisabled={!table.getCanPreviousPage()}
@@ -186,8 +199,19 @@ const TaskTable = () => {
           {">"}
         </Button>
       </ButtonGroup>
+      </div>
     </Box>
     </div>
+   {!openinfo && 
+     (<div className="fixed right-0 top-0 z-[10] bg-white duration-300 p-6 pr-9 overflow-y-visible">
+       <button onClick={updateInfo}>
+         <i class="fa-solid fa-right-to-bracket"></i>
+       </button> 
+       <Info/>
+       {/* <button onClick={updateInfo} className="font-bold">Click here</button> */}
+    </div>)}
+   
+    </>
   );
 };
 export default TaskTable;

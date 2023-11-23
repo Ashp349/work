@@ -8,7 +8,7 @@ export default function RiskNavigation(){
   const FontAwesomeClasses2 ="fa-solid fa-list fa-sm mr-1"
   
      return(
-        <div className='mt-1.5 ml-2 mr-2 mb-2 flex-row'>
+        <div className='ml-2 mr-2 mb-2 flex-row'>
         <Link to="/risk/list">
           <Button customClasses={ButtonClassName} iconClasses={FontAwesomeClasses2} text="List"/>
           </Link> 

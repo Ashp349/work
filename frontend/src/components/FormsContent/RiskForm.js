@@ -226,8 +226,8 @@ const RiskForm = () => {
   console.log(result);
 
   return (
-    <div className="m-4 w-85 h-full shadow-md shadow-gray-200 rounded-xl bg-white">
-     <h3 className="text-[1rem] font-bold p-4 pb-0 ">Add Risk Info</h3>
+    <div className="m-4 mt-32 w-85 h-full shadow-md shadow-gray-200 rounded-xl bg-white">
+     <h3 className="text-[1rem] font-bold p-4 pb-0 ">New Risk</h3>
     <form onSubmit={handleSubmit} className='text-sm m-4'>
       <div className='mt-1 flex flex-col'>
       <label className="font-bold" htmlFor="source">Select a source</label>

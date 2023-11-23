@@ -7,10 +7,12 @@ export default function RootLayout(props){
    return(
       <> 
         {/* <ProjectDataProvider> */}
-       {/* <div className='bg-[#3d1828] w-full'> */}
+       <div className='w-full'>
          <SideBar/>
+         <div className='overflow-visible'>
          <Outlet/>
-         {/* </div> */}
+         </div>
+         </div>
          {/* </ProjectDataProvider> */}
       </>
    )

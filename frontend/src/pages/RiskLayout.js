@@ -16,8 +16,11 @@ export default function RiskLayout(props){
    return(
     <ContextProvider>  
      <div className={`duration-300 ${openSideBar ? 'ml-72' : 'ml-24'}`}>
-       <div className='flex flex-row'>
-        <h2 className={`text-[1.3rem] font-bold pt-3 pl-4 `}>{props.projectName}</h2>
+       <div className='flex flex-col fixed z-[9] w-full bg-white'>
+        <div className='flex flex-row items-center'>
+        <div className=' m-4 p-4 w-9 h-9 bg-[#1B1212] rounded-lg'></div>        
+        <h2 className={`text-[1.3rem] font-bold text-center`}>Risks</h2>
+        </div>
         {/* <div className='ml-2 flex-row'> */}
         {/* <Link to="/board">
          <Button customClasses={ButtonClassName} text="Board"/>
@@ -27,7 +30,9 @@ export default function RiskLayout(props){
         <RiskNavigation/>
         </div>
       {/* <RiskForm/> */}
+      <div className='overflow-x-auto overflow-y-auto'>
       <Outlet/>
+      </div>
      </div>
     </ContextProvider>
    )

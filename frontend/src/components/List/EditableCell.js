@@ -23,7 +23,6 @@ const EditableCell = ({ getValue, row, column, table }) => {
       onBlur={onBlur}
       variant="filled"
       size="sm"
-      w="95%"
       overflow="hidden"
       textOverflow="ellipsis"
       whiteSpace="nowrap"

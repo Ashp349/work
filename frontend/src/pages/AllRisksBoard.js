@@ -4,7 +4,7 @@ import BoardContent from "../components/Board/BoardContent";
 
 export default function AllRisksBoard(){
     return(
-        <div>
+        <div className="mt-32">
             {/* <h3 className=" text-lg m-4 font-bold">
                 All Risks
             </h3> */}
