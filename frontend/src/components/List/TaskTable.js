@@ -24,7 +24,7 @@ const columns = [
   {
     accessorKey: "risk_id",
     header: "RUID",
-    size:100,
+    size:70,
     cell: EditableCell,
     enableColumnFilter: true,
     filterFn: "includesString",
@@ -32,7 +32,7 @@ const columns = [
   {
     accessorKey: "risk_title",
     header: "Title",
-    size:400 ,
+    size:200 ,
     cell: EditableCell,
     enableColumnFilter: true,
     filterFn: "includesString",
@@ -40,7 +40,7 @@ const columns = [
   {
     accessorKey: "probability",
     header: "Probability",
-    size:400 ,
+    size:200,
     cell: EditableCell,
     enableColumnFilter: true,
     filterFn: "includesString",
@@ -48,7 +48,7 @@ const columns = [
   {
     accessorKey: "impact",
     header: "Impact",
-    size:400 ,
+    size:200,
     cell: EditableCell,
     enableColumnFilter: true,
     filterFn: "includesString",
@@ -56,7 +56,7 @@ const columns = [
    {
     accessorKey: "priority",
     header: "Priority",
-    size:400 ,
+    size:200,
     cell: EditableCell,
     enableColumnFilter: true,
     filterFn: "includesString",
@@ -64,7 +64,7 @@ const columns = [
   {
     accessorKey: "severity",
     header: "Severity",
-    size:400 ,
+    size:200,
     cell: EditableCell,
     enableColumnFilter: true,
     filterFn: "includesString",
@@ -203,7 +203,7 @@ const TaskTable = () => {
     </Box>
     </div>
    {!openinfo && 
-     (<div className="fixed right-0 top-0 z-[10] bg-white duration-300 p-6 pr-9 overflow-y-visible">
+     (<div className="fixed right-0 top-0 z-[10] bg-white duration-300 p-6 pr-9 overflow-y-visible max-w-[46%]">
        <button onClick={updateInfo}>
          <i class="fa-solid fa-right-to-bracket"></i>
        </button> 

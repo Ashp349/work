@@ -3,13 +3,19 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 // import { ProjectDataContext, ProjectDataProvider } from '../Context/FormContext';
 import { dropdownData } from '../../CustomTemplates/CreateProject';
-// import { useFormContext } from '../Context/FormContext';
+import { useFormContext } from '../Context/FormContext';
+import { useSideBar } from '../Context/SideBarContext';
 
 
 const LinkDropdown = (props) => {
   // const { projectData } = useContext(ProjectDataContext);
   const [options, setOptions] = useState([]);
-//  const {state} = useFormContext;
+ const { state } = useFormContext();
+ const openSideBar = useSideBar();
+
+ const[data,setData] = useState();
+ 
+
 
   // console.log(projectData);
   // const name=state.name;
@@ -30,18 +36,21 @@ const LinkDropdown = (props) => {
   return (
     
     <div>
-      {options.map((option) => (
+      {/* {options.map((option) => (
         <span key={option.key} value={option.value}>
           <Link className={props.classes} to={option.link}>
             {option.value}
           </Link>
         </span>
-      ))}
-      {/* <Link>
-        <span>
-           {props.name}
-        </span>
-      </Link> */}
+      ))} */}
+      {/* <Link > */}
+        {/* <div className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2 ${!openSideBar && "hidden"}`}> */}
+                <span className={` ${props.classes} flex flex-row`}>
+                 {/* <i class="fa-regular fa-circle-dot fa-sm"></i> */}
+                 <Link to="/risk">{state.projectName}</Link>
+                </span>
+        {/* </div> */}
+      {/* </Link> */}
 
       <Link className={props.classes} to="/projects/new">
         <i className="fa-solid fa-plus fa-sm"></i>

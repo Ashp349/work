@@ -62,7 +62,7 @@ const CreateProject = () => {
       link: '/risk',
     },
     {
-      title: 'Another One',
+      title: 'Another Template',
       component: <RiskLayout projectName={state.projectName} />,
       link: '/risk',
     },
@@ -98,7 +98,7 @@ const CreateProject = () => {
                   onChange={handleProjectChange}
                   placeholder="Enter Project Name"
                 />
-                <ul className="flex flex-row justify-center">
+                <ul className="flex flex-row justify-center mr-10">
                   {templates.map((template, index) => (
                     <li
                       className="bg-gray-800 w-[8.3rem] h-[8.4rem] text-center text-gray-300 pt-[2.6rem] pl-4 pr-4 ml-9 mt-4 rounded-md cursor-pointer hover:shadow-xl"

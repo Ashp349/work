@@ -11,9 +11,9 @@ export default function NewProject(){
             {/* <h2 className="text-xl flex justify-center items-center">Create a new Project</h2> */}
          {/* <ProjectDataProvider> */}
          {/* Your other components */}
-         <FormProvider initialState={{ projectName: '', template: '' }}>
+         {/* <FormProvider initialState={{ projectName: '', template: '' }}> */}
            <CreateProject />
-           </FormProvider>
+           {/* </FormProvider> */}
             {/* Other components */}
         {/* </ProjectDataProvider> */}
          </div>

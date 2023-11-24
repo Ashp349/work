@@ -56,10 +56,9 @@ const router = createBrowserRouter([
 
 function App() {
   return (
+    
     <ContextProvider>
-     {/* <BackgroundWrapper> */}
      <RouterProvider router={router}/>
-     {/* </BackgroundWrapper> */}
     </ContextProvider>
   );
 }

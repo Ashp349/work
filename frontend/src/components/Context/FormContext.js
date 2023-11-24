@@ -1,4 +1,48 @@
-// // FormContext.js
+import React, { createContext, useReducer, useContext } from 'react';
+
+const FormContext = createContext();
+
+const formReducer = (state, action) => {
+  switch (action.type) {
+    case 'UPDATE_FIELD':
+      return { ...state, [action.field]: action.value };
+    case 'RESET_FORM':
+      return { ...action.initialState, submittedData: [] }; // Add submittedData property with an empty array
+    case 'SUBMIT_FORM':
+      // Add the submitted data to the array in state
+      const updatedSubmittedData = [...state.submittedData, state];
+      console.log('Form submitted with data:', state);
+      console.log('All submitted data:', updatedSubmittedData);
+      return { ...state, submittedData: updatedSubmittedData }; // Update the submittedData property in state
+    default:
+      return state;
+  }
+};
+
+export const FormProvider = ({ children, initialState }) => {
+  const [state, dispatch] = useReducer(formReducer, { ...initialState, submittedData: [] }); // Include submittedData property in initial state
+
+  return (
+    <FormContext.Provider value={{ state, dispatch }}>
+      {children}
+    </FormContext.Provider>
+  );
+};
+
+export const useFormContext = () => {
+  const context = useContext(FormContext);
+  if (!context) {
+    throw new Error('useFormContext must be used within a FormProvider');
+  }
+  return context;
+};
+
+
+
+
+
+
+//Very Important
 // import React, { createContext, useReducer, useContext } from 'react';
 
 // const FormContext = createContext();
@@ -10,9 +54,9 @@
 //     case 'RESET_FORM':
 //       return action.initialState;
 //     case 'SUBMIT_FORM':
-//       // Accumulate submitted data in an array
-//       const newData = { ...state, timestamp: new Date() }; // Add timestamp for reference
-//       return { ...state, formData: [...(state.formData || []), newData] };
+//       // You can handle the submitted data here or send it to a server
+//       console.log('Form submitted with data:', state);
+//       return state;
 //     default:
 //       return state;
 //   }
@@ -35,49 +79,6 @@
 //   }
 //   return context;
 // };
-
-
-
-
-
-
-
-import React, { createContext, useReducer, useContext } from 'react';
-
-const FormContext = createContext();
-
-const formReducer = (state, action) => {
-  switch (action.type) {
-    case 'UPDATE_FIELD':
-      return { ...state, [action.field]: action.value };
-    case 'RESET_FORM':
-      return action.initialState;
-    case 'SUBMIT_FORM':
-      // You can handle the submitted data here or send it to a server
-      console.log('Form submitted with data:', state);
-      return state;
-    default:
-      return state;
-  }
-};
-
-export const FormProvider = ({ children, initialState }) => {
-  const [state, dispatch] = useReducer(formReducer, initialState);
-
-  return (
-    <FormContext.Provider value={{ state, dispatch }}>
-      {children}
-    </FormContext.Provider>
-  );
-};
-
-export const useFormContext = () => {
-  const context = useContext(FormContext);
-  if (!context) {
-    throw new Error('useFormContext must be used within a FormProvider');
-  }
-  return context;
-};
 
 
 

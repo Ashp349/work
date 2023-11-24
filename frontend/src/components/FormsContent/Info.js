@@ -1,3 +1,4 @@
+import { BreadcrumbLink } from "@chakra-ui/react";
 import React from "react";
 
 //This Data is controlled by the Add Risk Tab
@@ -9,50 +10,73 @@ export default function Info(){
          <section>
             <div>
                 <h1 className="font-bold text-3xl mb-3">
-                   Risk Title 
+                   Delay in Sprint Delivery
                 </h1>
                {/* live handling */}
-                <div>
-                   Risk Owner
+                <div className=" mb-4 text-sm font-semibold text-[#1B1212] flex flex-row items-center justify-between">
+                  <p className="opacity-92">Owner</p>
+                   <p className="text-sm font-semibold text-center">Project Manager</p>
                 </div>
                 <div>
-                   Risk Status
+                   
                 </div>
-                <div>
-                   Project with which the risk is being associated
+                <div className="mb-4 text-sm font-semibold text-[#1B1212] flex flex-row items-center justify-between">
+                <p className="text-opacity-40">Project</p>
+                <p className="text-sm font-semibold text-center">BGND-Bhugyan Project</p>
                 </div>
-                <div>
-                   Category to which the risk is related
+                <div className="mb-4 text-sm font-semibold text-[#1B1212] flex flex-row items-center justify-between">
+                <p className="text-opacity-40">Category</p>
+                <p className="text-sm font-semibold text-center">Performance</p>
                 </div>
-                <div>
-                    Risk Relation
+                <div className="mb-4 text-sm text-[#1B1212] flex flex-row items-center justify-between">
+                <p>Relation</p>
+                <p className="text-sm font-bold text-center">Customer Satisfaction</p>
                 </div>
-                <div>
-                   Risk Description 
+                <div className="text-sm text-[#1B1212] flex flex-col mb-6">
+                <p className="opacity-92 mb-1">Description</p>
+                <div className="text-sm font-bold ml-0">"Delay in delivery of sprint Goal because of unavailability of shared resource (Human resource, hardware, software etc).Resource unavailability due to excigencies in other project"
+               </div>
                 </div>
-                <div>
-                    Risk Trigger
+                <div className="text-sm text-[#1B1212] flex flex-col mb-6">
+                <p className="opacity-92 mb-1">Trigger</p>
+                <div className="text-sm font-bold ml-0">"Resource unavailability due to excigencies in other project
+"</div>
                 </div>
 
                 <div>
-                <div>
-                    Risk Impact Description
+                
+                <h1 className="font-bold">Risk Analysis</h1>
+                
+                <div className="text-sm text-[#1B1212] flex flex-col mb-6">
+                <p className="opacity-92 mb-1">Impact Description</p>
+                <div className="text-sm font-bold ml-0">Delay in completion of planned tasks in a sprint.
+</div>
                 </div>
-                <div>
-                    Existing Controls
-                </div>
-                <div>
-                    Impact On
-                </div>
-                <div>
-                    Probability of Occurence
-                </div>
-                <div>
-                   Impact
-                </div>
-                <div>
-                    Risk Priority Number
-                </div>
+                <div className="text-sm text-[#1B1212] flex flex-col mb-4">
+                <p className="opacity-92 mb-1">Existing Controls</p>
+                <div className="text-sm font-bold ml-0 shadow-sm border-1">Capacity of shared resources are considered based on two project allocation.
+                 </div>
+                 </div>
+                 <div className="text-sm text-[#1B1212] flex flex-row justify-between mb-3">
+                <p className="opacity-92 mb-2">Impact On</p>
+                <div className="text-sm text-center font-bold ml-0">Schedule</div>
+                 </div>
+                 <div className="text-sm text-[#1B1212] flex flex-row justify-between mb-3">
+                <p className="opacity-92 mb-1">Probability</p>
+                <div className="text-sm text-center font-bold ml-0">Very Low</div>
+                 </div>
+                 <div className="text-sm text-[#1B1212] flex flex-row justify-between mb-3">
+                <p className="opacity-92 mb-1">Impact</p>
+                <div className="text-sm text-center font-bold ml-0">Medium</div>
+                 </div>
+               <div className="text-sm text-[#1B1212] flex flex-row justify-between mb-3">
+                <p className="opacity-92 mb-1">Impact</p>
+                <div className="text-sm text-center font-bold ml-0">Medium</div>
+                 </div>
+                 <div className="text-sm text-[#1B1212] flex flex-row justify-between mb-3">
+                <p className="opacity-92 mb-1">Severity</p>
+                <div className="text-sm text-center font-bold ml-0">Very Low</div>
+                 </div>
                 <div>
                     Risk Priority
                 </div>

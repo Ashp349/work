@@ -8,7 +8,9 @@ import { FormProvider } from './components/Context/FormContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App/>
+   <FormProvider initialState={{ projectName: '', template: '' , submittedData:[]}}>
+     <App/>
+   </FormProvider>
   </React.StrictMode>
 );
 
