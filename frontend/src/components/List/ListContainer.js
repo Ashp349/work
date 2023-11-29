@@ -1,11 +1,19 @@
 
 import { Box, ChakraProvider, Heading, StackDivider } from "@chakra-ui/react";
 import TaskTable from "./TaskTable";
+import { Link } from "react-router-dom";
+
 function ListContainer() {
   return (
     <div>
-    <Box className="ml-1" px={1} pt={35} fontSize="sm">
-      {/* <Heading mb={10}>TanStack Table</Heading> */}
+    <Link to="/risk/new">
+    <button className="flex flex-row items-center mt-1 p-0.5 pr-2 pl-2 ml-2 rounded-md bg-[#ffffff] text-sm font-bold">
+      <i class="fa-solid fa-plus fa-sm pr-1"></i>
+      <p>Add</p>
+      </button>
+    </Link>
+    <Box className="ml-1" px={1} pt={28} fontSize="sm">
+     {/* <Heading mb={10}>TanStack Table</Heading> */}
       <TaskTable />
     </Box>
     </div>

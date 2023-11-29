@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     element : <RootLayout />,
     children: [
       { index:true ,element :<HomePage/>},
-      { path: "risk" ,element: <RiskLayout/>,
+      { path: "risk/*" ,element: <RiskLayout/>,
         children:[
           {index:true,element:<AllRisksBoard/>},
           {path:"list",element:<AllRisksList/>},

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 // import { FormProvider, useFormContext } from './FormContext'; // Import your FormContext here
 import { FormProvider,useFormContext } from '../components/Context/FormContext';
 // import DisplaySubmittedData from './DisplaySubmittedData';
@@ -12,6 +12,7 @@ const CreateProject = () => {
   const { state, dispatch } = useFormContext();
   const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
+  const params = useParams();
 
   const handleProjectChange = (e) => {
     dispatch({ type: 'UPDATE_FIELD', field: 'projectName', value: e.target.value });
@@ -59,12 +60,12 @@ const CreateProject = () => {
     {
       title: 'Risk Template',
       component: <RiskLayout projectName={state.projectName} />,
-      link: '/risk',
+      link: params,
     },
     {
       title: 'Another Template',
       component: <RiskLayout projectName={state.projectName} />,
-      link: '/risk',
+      link: params,
     },
   ];
 

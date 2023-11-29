@@ -5,9 +5,18 @@ import { Link } from 'react-router-dom';
 import { dropdownData } from '../../CustomTemplates/CreateProject';
 import { useFormContext } from '../Context/FormContext';
 import { useSideBar } from '../Context/SideBarContext';
+import { useParams } from 'react-router-dom';
 
 
 const LinkDropdown = (props) => {
+  // const { '*': wildcardParams } = useParams();
+  const { param1, param2 } = useParams();
+
+  // Use the dynamic parameters as needed
+  console.log(param1); // 1205905917693645
+  console.log(param2); // 1205905635637959
+
+  
   // const { projectData } = useContext(ProjectDataContext);
   const [options, setOptions] = useState([]);
  const { state } = useFormContext();
@@ -33,6 +42,8 @@ const LinkDropdown = (props) => {
     // }
   };
 
+  console.log(state.submittedData);
+
   return (
     
     <div>
@@ -45,9 +56,14 @@ const LinkDropdown = (props) => {
       ))} */}
       {/* <Link > */}
         {/* <div className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2 ${!openSideBar && "hidden"}`}> */}
-                <span className={` ${props.classes} flex flex-row`}>
+                <span className={` flex flex-col`}>
                  {/* <i class="fa-regular fa-circle-dot fa-sm"></i> */}
-                 <Link to="/risk">{state.projectName}</Link>
+                 {/* <Link to="/risk">{state.projectName}</Link> */}
+                 {state.submittedData.map((field) => (
+                 <Link to={`/risk`}>
+                    <span className={props.classes}>{field.projectName}</span>
+                 </Link>
+                  ))}
                 </span>
         {/* </div> */}
       {/* </Link> */}
