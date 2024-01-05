@@ -17,11 +17,11 @@ export default function RiskLayout(props){
 
    return(
     <ContextProvider>  
-     <div className={`duration-300 ${openSideBar ? 'ml-72' : 'ml-24'}`}>
-       <div className='flex flex-col fixed z-[9] w-full bg-white'>
-        <div className='flex flex-row items-center'>
+     <div className={`duration-300 z-40 relative`}> 
+       <div className={`flex flex-col fixed w-full bg-white m-0`}>
+        <div className={`flex flex-row items-center duration-300 ${openSideBar ? 'ml-72' : 'ml-24'}`}>
         <div className=' m-4 p-4 w-9 h-9 bg-[#1B1212] rounded-lg'></div>        
-        <h2 className={`text-[1.3rem] font-bold text-center`}>{state.projectName}</h2>
+        <h2 className={`text-[1.3rem] font-bold text-center`}>Risk Project</h2>
         </div>
         {/* <div className='ml-2 flex-row'> */}
         {/* <Link to="/board">
@@ -29,13 +29,17 @@ export default function RiskLayout(props){
         </Link>
         <Button customClasses={ButtonClassName} text="Add New Risk"/>
         <Button customClasses={ButtonClassName} text="Risk Implementation"/> */}
+        <div className={`duration-300 ${openSideBar ? 'ml-72' : 'ml-24'}`}>
         <RiskNavigation/>
         </div>
+        </div>
       {/* <RiskForm/> */}
-      <div className='overflow-x-auto overflow-y-auto'>
+      <div className={`overflow-x-auto overflow-y-auto duration-300 ${openSideBar ? 'ml-72' : 'ml-24'}`}>
       <Outlet/>
       </div>
      </div>
     </ContextProvider>
    )
 }
+
+// ${openSideBar ? 'ml-72' : 'ml-24'}

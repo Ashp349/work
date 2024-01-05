@@ -1,3 +1,4 @@
+//Very Imp too
 import React, { createContext, useReducer, useContext } from 'react';
 
 const FormContext = createContext();
@@ -10,6 +11,7 @@ const formReducer = (state, action) => {
       return { ...action.initialState, submittedData: [] }; // Add submittedData property with an empty array
     case 'SUBMIT_FORM':
       // Add the submitted data to the array in state
+      const link = Math.random();
       const updatedSubmittedData = [...state.submittedData, state];
       console.log('Form submitted with data:', state);
       console.log('All submitted data:', updatedSubmittedData);
@@ -51,6 +53,21 @@ export const useFormContext = () => {
 //   switch (action.type) {
 //     case 'UPDATE_FIELD':
 //       return { ...state, [action.field]: action.value };
+//     case 'RESET_FORM':
+//       return action.initialState;
+//     case 'SUBMIT_FORM':
+//       // You can handle the submitted data here or send it to a server
+//       console.log('Form submitted with data:', state);
+//       return state;
+//     default:
+//       return state;
+//   }
+// };
+
+// const formReducer = (state, action) => {
+//   switch (action.type) {
+//     case 'UPDATE_FIELD':
+//       return { ...state, [action.field]: { ...state[action.field], ...action.value } };
 //     case 'RESET_FORM':
 //       return action.initialState;
 //     case 'SUBMIT_FORM':

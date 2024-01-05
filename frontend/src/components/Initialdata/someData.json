@@ -1,0 +1,18 @@
+
+    {
+      projectName: "erxctfgvbhjn",
+      submittedData: { link: 0.527850080323587 },
+      template: {
+        component: {
+          $$typeof: Symbol(react.element),
+          key: null,
+          ref: null,
+          props: { type: "Risk Template" },
+          type: ƒ,
+          // ...
+        },
+        link: {},
+        // ...
+      },
+      title: "Risk Template",
+    }

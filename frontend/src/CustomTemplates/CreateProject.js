@@ -31,6 +31,7 @@ const CreateProject = () => {
     // };
 
     dispatch({ type: 'SUBMIT_FORM' });
+    // dispatch({ type: "RESET_FORM"});
     setSubmitted(true);
   };
 

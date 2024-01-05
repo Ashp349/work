@@ -16,6 +16,10 @@ import NewProject from './pages/NewProject';
 import AllRisksList from './pages/AllRisksList';
 import { ProjectDataProvider } from './components/Context/FormContext';
 import { FormProvider,useFormContext } from './components/Context/FormContext';
+import ProjectDetailsPage from './pages/ProjectDetailsPage';
+import Board from './pages/subpages/Board';
+import List from './pages/subpages/List';
+import AddItem from './pages/subpages/AddItem';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +33,16 @@ const router = createBrowserRouter([
           {path:"list",element:<AllRisksList/>},
           {path:"new",element:<NewRisk/>},
           {path:"riskmatrix",element:<RiskMatrix/>}
+          // {path:":riskId",element:<ProjectDetailsPage/>}
+        ]
+    },
+    { path: "p/:projectId" ,element: <ProjectDetailsPage/>,
+        children:[
+          {index:true,element:<Board/>},
+          {path:"list",element:<List/>},
+          {path:"new",element:<AddItem/>},
+          {path:"riskmatrix",element:<RiskMatrix/>},
+          // {path:":riskId",element:<ProjectDetailsPage/>}
         ]
     },
       { path: "notifications" ,element: <Notifications/>},
